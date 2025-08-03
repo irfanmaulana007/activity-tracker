@@ -4,7 +4,7 @@ import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string
-  variant?: 'primary' | 'secondary' | 'outline' | 'danger'
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost' | 'link'
   size?: 'small' | 'medium' | 'large'
   loading?: boolean
   disabled?: boolean
@@ -15,6 +15,17 @@ const variantStyles = {
   secondary: 'bg-secondary-500 active:bg-secondary-600',
   outline: 'bg-transparent border-2 border-primary-500 active:bg-primary-50',
   danger: 'bg-red-500 active:bg-red-600',
+  ghost: 'bg-transparent',
+  link: 'bg-transparent',
+} as const
+
+const textVariantStyles = {
+  primary: 'text-white',
+  secondary: 'text-white',
+  outline: 'text-primary-500',
+  danger: 'text-white',
+  ghost: 'text-primary-500',
+  link: 'text-primary-500 underline',
 } as const
 
 const sizeStyles = {
@@ -58,9 +69,9 @@ export const Button: React.FC<ButtonProps> = ({
       ) : (
         <Text
           className={cn(
-            'font-semibold text-center',
+            'font-semibold text-center text-initial',
             textSizeStyles[size],
-            variant === 'outline' ? 'text-primary-500' : 'text-white',
+            textVariantStyles[variant],
           )}>
           {title}
         </Text>

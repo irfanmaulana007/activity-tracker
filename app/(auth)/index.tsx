@@ -7,7 +7,7 @@ import { type ScreenComponent } from '~/types/component'
 import { validateEmail } from '~/utils/validation'
 
 export default function LoginScreen(): ReturnType<ScreenComponent> {
-  const { signIn, loading } = useAuth()
+  const { signIn, loading, continueAsGuest } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
@@ -96,11 +96,20 @@ export default function LoginScreen(): ReturnType<ScreenComponent> {
             style={{ marginBottom: 16 }}
           />
 
-          <View style={{ alignItems: 'center' }}>
-            <Text style={{ color: '#4B5563', marginBottom: 16 }}>Don&apos;t have an account?</Text>
-            <Link href='/signup' asChild>
-              <Button title='Create Account' variant='outline' />
-            </Link>
+          <View style={{ alignItems: 'center', gap: 16 }}>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ color: '#4B5563', marginBottom: 16 }}>
+                Don&apos;t have an account?
+              </Text>
+              <Link href='/signup' asChild>
+                <Button title='Create Account' variant='link' />
+              </Link>
+            </View>
+
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ color: '#4B5563', marginBottom: 16 }}>or</Text>
+              <Button title='Skip Login' variant='link' onPress={continueAsGuest} />
+            </View>
           </View>
         </View>
       </KeyboardAvoidingView>

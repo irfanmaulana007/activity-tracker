@@ -10,7 +10,9 @@ import {
 } from '~/services/auth'
 import { AuthUser, UseAuthResult } from '~/types'
 
-export const useAuth = (): UseAuthResult => {
+export const useAuth = (): UseAuthResult & {
+  continueAsGuest: () => void
+} => {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -22,6 +24,7 @@ export const useAuth = (): UseAuthResult => {
           uid: firebaseUser.uid,
           email: firebaseUser.email,
           displayName: firebaseUser.displayName,
+          isGuest: false
         })
       } else {
         setUser(null)
@@ -31,6 +34,15 @@ export const useAuth = (): UseAuthResult => {
 
     return unsubscribe
   }, [])
+
+  const continueAsGuest = (): void => {
+    setUser({
+      uid: 'guest-' + Date.now(),
+      email: null,
+      displayName: 'Guest',
+      isGuest: true
+    })
+  }
 
   const signIn = async (email: string, password: string): Promise<void> => {
     try {
@@ -86,5 +98,6 @@ export const useAuth = (): UseAuthResult => {
     signUp,
     signOut,
     resetPassword: handleResetPassword,
+    continueAsGuest
   }
 }

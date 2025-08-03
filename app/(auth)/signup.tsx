@@ -100,7 +100,7 @@ export default function SignUpScreen() {
           <View style={{ alignItems: 'center' }}>
             <Text style={{ color: '#4B5563', marginBottom: 16 }}>Already have an account?</Text>
             <Link href='/' asChild>
-              <Button title='Sign In' variant='outline' />
+              <Button title='Sign In' variant='link' />
             </Link>
           </View>
         </View>

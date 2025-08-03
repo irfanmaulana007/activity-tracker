@@ -6,7 +6,7 @@ import '~/global.css'
 import { type LayoutScreenComponent } from '~/types/component'
 
 export default function RootLayout(): ReturnType<LayoutScreenComponent> {
-  const { loading } = useAuth()
+  const { user, loading } = useAuth()
 
   if (loading) {
     return (
@@ -28,7 +28,11 @@ export default function RootLayout(): ReturnType<LayoutScreenComponent> {
         headerShown: false,
         contentStyle: { backgroundColor: 'white' },
       }}>
-      <Stack.Screen name='(auth)' />
+      {user ? (
+        <Stack.Screen name='(tabs)' />
+      ) : (
+        <Stack.Screen name='(auth)' />
+      )}
     </Stack>
   )
 }

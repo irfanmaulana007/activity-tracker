@@ -1,14 +1,18 @@
-import { Stack } from 'expo-router'
+import { Link, Stack } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Card } from '~/components/common'
 import ActivityCard from '~/components/module/home/ActivityCard'
 import QuickStartItem from '~/components/module/home/QuickStartItem'
+import { useAuth } from '~/hooks/useAuth'
 import { useQuickStart } from '~/hooks/useQuickStart'
 import { useTimer } from '~/hooks/useTimer'
 import { formatDurationCompact } from '~/utils/format'
 
-export default function Home() {
+import { type ScreenComponent } from '~/types/component'
+
+export default function Home(): ReturnType<ScreenComponent> {
+  const { user } = useAuth()
   const { quickStartItems } = useQuickStart()
   const { timerState } = useTimer()
 
@@ -21,7 +25,19 @@ export default function Home() {
           {/* Header */}
           <View className='px-6 pt-6 pb-4'>
             <Text className='text-2xl font-bold text-gray-900'>ActivityTracker Pro</Text>
-            <Text className='text-gray-600 mt-1'>Track your productivity activities</Text>
+            <Text className='text-gray-600 mt-1'>
+              {user?.isGuest 
+                ? 'Welcome! You\'re exploring as a guest. Sign up to save your data.'
+                : 'Track your productivity activities'
+              }
+            </Text>
+            {user?.isGuest && (
+              <View className='mt-3'>
+                <Link href='/(auth)' asChild>
+                  <Button title='Sign Up' variant='outline' size='small' />
+                </Link>
+              </View>
+            )}
           </View>
 
           {/* Active Timer */}
@@ -63,30 +79,36 @@ export default function Home() {
           <View className='px-6 mb-6'>
             <Text className='text-xl font-semibold text-gray-900 mb-4'>Start New Activity</Text>
             <View className='flex-row'>
-              <ActivityCard
-                title='Coding'
-                icon='code-slash'
-                color='#3b82f6'
-                onPress={() => {
-                  /* TODO: Navigate to start coding */
-                }}
-              />
-              <ActivityCard
-                title='Gaming'
-                icon='game-controller'
-                color='#10b981'
-                onPress={() => {
-                  /* TODO: Navigate to start gaming */
-                }}
-              />
-              <ActivityCard
-                title='Running'
-                icon='footsteps'
-                color='#f59e0b'
-                onPress={() => {
-                  /* TODO: Navigate to start running */
-                }}
-              />
+              <Link href='/activities/start/coding' asChild>
+                <ActivityCard
+                  title='Coding'
+                  icon='code-slash'
+                  color='#3b82f6'
+                  onPress={() => {
+                    /* Navigation handled by Link */
+                  }}
+                />
+              </Link>
+              <Link href='/activities/start/gaming' asChild>
+                <ActivityCard
+                  title='Gaming'
+                  icon='game-controller'
+                  color='#10b981'
+                  onPress={() => {
+                    /* Navigation handled by Link */
+                  }}
+                />
+              </Link>
+              <Link href='/activities/start/running' asChild>
+                <ActivityCard
+                  title='Running'
+                  icon='footsteps'
+                  color='#f59e0b'
+                  onPress={() => {
+                    /* Navigation handled by Link */
+                  }}
+                />
+              </Link>
             </View>
           </View>
 
