@@ -1,13 +1,15 @@
 {
   "name": "time-tracker",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test-env": "node scripts/test-env.js"
+    "test-env": "node scripts/test-env.js",
+    "format": "prettier --write .",
+    "lint": "expo lint"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -15,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/native": "^7.1.6",
     "@react-navigation/stack": "^7.4.4",
+    "clsx": "^2.1.1",
     "expo": "~53.0.20",
     "expo-constants": "^17.1.7",
     "expo-location": "^18.1.6",
@@ -26,13 +29,18 @@
     "react-native": "0.79.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/react": "~19.0.10",
     "dotenv": "^17.2.1",
+    "eslint": "^9.32.0",
+    "eslint-config-expo": "^9.2.0",
     "expo-env": "^1.1.1",
+    "prettier": "^3.6.2",
     "typescript": "~5.8.3"
   },
   "private": true

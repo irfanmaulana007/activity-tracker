@@ -5,23 +5,27 @@ A comprehensive iOS time tracking app built with React Native and Expo, designed
 ## 🚀 Features
 
 ### Core Activities
+
 - **Coding Projects**: Create and manage coding projects with language tracking
 - **Gaming Library**: Maintain a library of games with platform and genre information
 - **Sports Tracking**: Track running activities with GPS, distance, and heart rate data
 
 ### Smart Timer System
+
 - Project/game context during active sessions
 - Session notes and results tracking
 - Quick start functionality for recent/favorite items
 - Persistent timer state across app restarts
 
 ### Project Management
+
 - Create, edit, and archive projects/games
 - Automatic statistics calculation (total time, session count, average session length)
 - Search and filter functionality
 - Quick access to frequently used items
 
 ### Data & Analytics
+
 - Comprehensive activity history
 - Project and game statistics
 - Time tracking insights
@@ -50,6 +54,7 @@ ActivityTracker Pro/
 ## 🔧 Installation & Setup
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm or yarn
 - Expo CLI
@@ -57,12 +62,14 @@ ActivityTracker Pro/
 - Firebase project
 
 ### 1. Clone the Repository
+
 ```bash
 git clone <repository-url>
 cd time-tracker
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
@@ -90,6 +97,7 @@ FIREBASE_APP_ID=your-app-id
 Replace these placeholder values with your actual Firebase configuration.
 
 **Test Environment Variables:**
+
 ```bash
 npm run test-env
 ```
@@ -152,6 +160,7 @@ time-tracker/
 ### Core Collections
 
 #### Users
+
 ```typescript
 {
   userId: string;
@@ -166,6 +175,7 @@ time-tracker/
 ```
 
 #### Coding Projects
+
 ```typescript
 {
   projectId: string;
@@ -183,6 +193,7 @@ time-tracker/
 ```
 
 #### Gaming Projects
+
 ```typescript
 {
   gameId: string;
@@ -200,6 +211,7 @@ time-tracker/
 ```
 
 #### Activities
+
 ```typescript
 {
   activityId: string;
@@ -224,6 +236,7 @@ time-tracker/
 ## 🎨 Design System
 
 ### Colors
+
 - **Primary**: Blue (#3b82f6)
 - **Secondary**: Green (#10b981)
 - **Accent**: Amber (#f59e0b)
@@ -231,6 +244,7 @@ time-tracker/
 - **Text**: Gray-900 for primary, Gray-600 for secondary
 
 ### Components
+
 - All components use NativeWind (Tailwind CSS) for styling
 - Consistent padding, margins, and border radius
 - iOS-first design patterns
@@ -246,6 +260,7 @@ time-tracker/
 ## 📊 Features Roadmap
 
 ### Phase 1 (MVP) ✅
+
 - [x] User authentication
 - [x] Basic project/game management
 - [x] Timer functionality
@@ -253,6 +268,7 @@ time-tracker/
 - [x] Quick start functionality
 
 ### Phase 2 (Enhanced Features)
+
 - [ ] Advanced statistics and analytics
 - [ ] Data export functionality
 - [ ] Push notifications for timer reminders
@@ -260,6 +276,7 @@ time-tracker/
 - [ ] Offline support
 
 ### Phase 3 (Advanced Features)
+
 - [ ] Team collaboration features
 - [ ] Integration with development tools (GitHub, VS Code)
 - [ ] Advanced reporting and insights

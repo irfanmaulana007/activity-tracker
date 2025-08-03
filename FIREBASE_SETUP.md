@@ -28,7 +28,7 @@
 
 1. Go to Project Settings (gear icon)
 2. Scroll down to "Your apps"
-3. Click "Add app" and select Web (</>) 
+3. Click "Add app" and select Web (</>)
 4. Register app with nickname: "ActivityTracker Pro"
 5. Copy the Firebase configuration object
 
@@ -76,6 +76,7 @@ The app is configured to read these environment variables through `app.config.js
 ## Security Rules Explanation
 
 The provided `firestore.rules` file ensures:
+
 - Users can only read/write their own data
 - All operations require authentication
 - Data is properly scoped to user IDs

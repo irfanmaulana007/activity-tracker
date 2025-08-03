@@ -1,0 +1,17 @@
+# Ignore artifacts
+node_modules
+.expo
+.expo-shared
+dist
+build
+coverage
+web-build
+
+# Ignore generated files
+*.generated.ts
+*.generated.tsx
+
+# Ignore specific files
+app.json
+package-lock.json
+yarn.lock
