@@ -1,6 +1,5 @@
-import { Ionicons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
-
+import { CircleDot, Home, List, User } from 'lucide-react-native'
 import { type ScreenComponent } from '~/types/component'
 
 export default function TabsLayout(): ReturnType<ScreenComponent> {
@@ -16,31 +15,31 @@ export default function TabsLayout(): ReturnType<ScreenComponent> {
         tabBarInactiveTintColor: '#6b7280',
       }}>
       <Tabs.Screen
-        name='(home)'
+        name='(home)/index'
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => <Ionicons name='home' size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name='activities'
         options={{
           title: 'Activities',
-          tabBarIcon: ({ color, size }) => <Ionicons name='list' size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <List size={size} color={color} />,
         }}
       />
       <Tabs.Screen
-        name='projects'
+        name='track'
         options={{
-          title: 'Projects',
-          tabBarIcon: ({ color, size }) => <Ionicons name='folder' size={size} color={color} />,
+          title: 'Track',
+          tabBarIcon: ({ color, size }) => <CircleDot size={size} color={color} />,
         }}
       />
       <Tabs.Screen
-        name='profile'
+        name='profile/index'
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => <Ionicons name='person' size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
         }}
       />
     </Tabs>

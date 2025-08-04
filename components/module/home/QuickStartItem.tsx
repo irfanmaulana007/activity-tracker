@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons'
+import { PlayCircle } from 'lucide-react-native'
 import { Text, View } from 'react-native'
 import { Card } from '~/components/common'
 import { formatDurationCompact } from '~/utils/format'
@@ -25,7 +25,7 @@ export default function QuickStartItem({ item }: QuickStartItemProps) {
             {item.category} • {formatDurationCompact(item.totalDuration)} total
           </Text>
         </View>
-        <Ionicons name='play-circle' size={24} color='#3b82f6' />
+        <PlayCircle size={24} color='#3b82f6' />
       </View>
     </Card>
   )

@@ -1,5 +1,5 @@
-import { Ionicons } from '@expo/vector-icons'
 import { Link, Stack } from 'expo-router'
+import { Code } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 
 const PROJECT_TYPES = [
@@ -30,7 +30,7 @@ export default function ProjectsScreen() {
           <Link key={type.id} href={type.href} asChild>
             <View className='bg-gray-50 rounded-xl p-4 flex-row items-center w-full'>
               <View className='w-12 h-12 bg-primary-100 rounded-full items-center justify-center mr-4'>
-                <Ionicons name='code-slash' size={24} color='#2563eb' />
+                <Code size={24} color='#2563eb' />
               </View>
               <Text className='text-base font-medium text-gray-900'>{type.title}</Text>
             </View>

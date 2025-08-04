@@ -2,6 +2,7 @@ import { Stack, router, useLocalSearchParams } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
 import { Button } from '~/components/common'
 import { useActivities } from '~/hooks/useActivities'
+import { formatTimeHuman } from '~/utils/time'
 
 export default function ActivityDetailScreen() {
   const { id } = useLocalSearchParams()
@@ -42,7 +43,7 @@ export default function ActivityDetailScreen() {
         <View className='py-4'>
           <Text className='text-xl font-semibold text-gray-900 mb-2'>{activity.category}</Text>
           <Text className='text-base text-gray-500 mb-4'>
-            Duration: {activity.duration} minutes
+            Duration: {formatTimeHuman(activity.duration)}
           </Text>
 
           <Text className='text-base text-gray-700 mb-6'>{activity.category}</Text>

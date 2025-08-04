@@ -284,21 +284,3 @@ export interface UseQuickStartResult {
   getFavoriteProjects: () => QuickStartItem[]
   getFavoriteGames: () => QuickStartItem[]
 }
-
-// Auth Types
-export interface AuthUser {
-  uid: string
-  email: string | null
-  displayName: string | null
-  isGuest?: boolean
-}
-
-export interface UseAuthResult {
-  user: AuthUser | null
-  loading: boolean
-  error: string | null
-  signIn: (email: string, password: string) => Promise<void>
-  signUp: (email: string, password: string) => Promise<void>
-  signOut: () => Promise<void>
-  resetPassword: (email: string) => Promise<void>
-}

@@ -2,19 +2,8 @@ import { Stack } from 'expo-router'
 import { Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Card } from '~/components/common'
-import { useAuth } from '~/hooks/useAuth'
 
 export default function Profile() {
-  const { user, signOut } = useAuth()
-
-  const handleSignOut = async () => {
-    try {
-      await signOut()
-    } catch (error) {
-      console.error('Sign out error:', error)
-    }
-  }
-
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
@@ -24,7 +13,7 @@ export default function Profile() {
 
           <Card className='mb-4'>
             <Text className='text-lg font-semibold text-gray-900 mb-2'>User Information</Text>
-            <Text className='text-gray-600'>Email: {user?.email || 'Not available'}</Text>
+            <Text className='text-gray-600'>Email: Not available</Text>
           </Card>
 
           <Card className='mb-4'>
@@ -33,7 +22,7 @@ export default function Profile() {
             </Text>
           </Card>
 
-          <Button title='Sign Out' variant='danger' onPress={handleSignOut} />
+          <Button title='Sign Out' variant='danger' onPress={() => {}} />
         </View>
       </SafeAreaView>
     </>

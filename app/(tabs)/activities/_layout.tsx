@@ -4,8 +4,7 @@ export default function ActivitiesLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
-        headerLargeTitle: true,
+        headerShown: false,
       }}
     />
   )

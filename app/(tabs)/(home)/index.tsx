@@ -1,43 +1,27 @@
-import { Link, Stack } from 'expo-router'
+import { Link } from 'expo-router'
+import { Code, Gamepad, HeartHandshake } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Card } from '~/components/common'
 import ActivityCard from '~/components/module/home/ActivityCard'
 import QuickStartItem from '~/components/module/home/QuickStartItem'
-import { useAuth } from '~/hooks/useAuth'
 import { useQuickStart } from '~/hooks/useQuickStart'
 import { useTimer } from '~/hooks/useTimer'
+import { type ScreenComponent } from '~/types/component'
 import { formatDurationCompact } from '~/utils/format'
 
-import { type ScreenComponent } from '~/types/component'
-
 export default function Home(): ReturnType<ScreenComponent> {
-  const { user } = useAuth()
   const { quickStartItems } = useQuickStart()
   const { timerState } = useTimer()
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
-
       <SafeAreaView className='flex-1 bg-gray-50'>
         <ScrollView className='flex-1'>
           {/* Header */}
           <View className='px-6 pt-6 pb-4'>
             <Text className='text-2xl font-bold text-gray-900'>ActivityTracker Pro</Text>
-            <Text className='text-gray-600 mt-1'>
-              {user?.isGuest 
-                ? 'Welcome! You\'re exploring as a guest. Sign up to save your data.'
-                : 'Track your productivity activities'
-              }
-            </Text>
-            {user?.isGuest && (
-              <View className='mt-3'>
-                <Link href='/(auth)' asChild>
-                  <Button title='Sign Up' variant='outline' size='small' />
-                </Link>
-              </View>
-            )}
+            <Text className='text-gray-600 mt-1'>Track your productivity activities</Text>
           </View>
 
           {/* Active Timer */}
@@ -82,8 +66,8 @@ export default function Home(): ReturnType<ScreenComponent> {
               <Link href='/activities/start/coding' asChild>
                 <ActivityCard
                   title='Coding'
-                  icon='code-slash'
                   color='#3b82f6'
+                  icon={<Code size={32} color='#3b82f6' />}
                   onPress={() => {
                     /* Navigation handled by Link */
                   }}
@@ -92,8 +76,8 @@ export default function Home(): ReturnType<ScreenComponent> {
               <Link href='/activities/start/gaming' asChild>
                 <ActivityCard
                   title='Gaming'
-                  icon='game-controller'
                   color='#10b981'
+                  icon={<Gamepad size={32} color='#10b981' />}
                   onPress={() => {
                     /* Navigation handled by Link */
                   }}
@@ -102,8 +86,8 @@ export default function Home(): ReturnType<ScreenComponent> {
               <Link href='/activities/start/running' asChild>
                 <ActivityCard
                   title='Running'
-                  icon='footsteps'
                   color='#f59e0b'
+                  icon={<HeartHandshake size={32} color='#10b981' />}
                   onPress={() => {
                     /* Navigation handled by Link */
                   }}
@@ -128,7 +112,7 @@ export default function Home(): ReturnType<ScreenComponent> {
               <Text className='text-xl font-semibold text-gray-900'>Recent Activities</Text>
               <Button
                 title='View All'
-                variant='outline'
+                variant='link'
                 size='small'
                 onPress={() => {
                   /* TODO: Navigate to history */
